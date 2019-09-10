@@ -1,0 +1,67 @@
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "airbnb",
+    "plugin:prettier/recommended",
+    "prettier/react",
+    "plugin:react/recommended"
+  ],
+  "rules": {
+    "comma-dangle": ["error", "always-multiline"],
+    "semi": "off"
+  },
+  "overrides": [{
+    "files": ["*.js", "src/*.js"],
+    "rules": {
+      "react/prop-types": "warn",
+      "jsx-a11y/label-has-associated-control": "warn",
+      "jsx-a11y/click-events-have-key-events": "off",
+      "jsx-a11y/no-noninteractive-element-interactions": "off",
+      "react/require-default-props": "warn",
+      "no-restricted-syntax": "off",
+      "react/forbid-prop-types": "warn",
+      "guard-for-in": "off",
+      "max-len": ["error", {
+        "code": 120,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }],
+      "no-useless-path-segments": "off",
+      "import/prefer-default-export": "off",
+      "arrow-parens": "off",
+      "react/jsx-filename-extension": "off",
+      "react/display-name": "off",
+      "import/no-useless-path-segments": "off",
+      "object-curly-newline": "off",
+      "react/jsx-indent-props": ["enabled", "tab"],
+      "no-param-reassign": "warn",
+      "consistent-return": "warn",
+      "react/destructuring-assignment": "warn",
+      "import/no-extraneous-dependencies": 0,
+      "jsx-a11y/label-has-for": 0,
+      "no-console": ["error", { "allow": ["warn", "error", "info"] }],
+      "react/no-array-index-key": "warn"
+    }
+  }],
+  "globals": {
+    "it": true,
+    "describe": true,
+    "window": true,
+    "expect": true,
+    "localStorage": true,
+    "fetch": true,
+    "FileReader": true,
+    "FormData": true,
+    "self": true,
+    "beforeAll": true,
+    "beforeEach": true,
+    "jest": true,
+    "document": true
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.dev.js"
+      }
+    }
+  }

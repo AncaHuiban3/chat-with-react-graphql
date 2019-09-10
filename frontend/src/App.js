@@ -5,7 +5,7 @@ import gql from 'graphql-tag'
 import Signup from './screens/Auth/Signup'
 import Chatbox from './screens/ChatPage/Chatbox'
 
-import { style } from './styled'
+import { ChatInput, Wrapper, SignUpWrapper, ChatWrapper , ChatTitleContainer, ChatTitle, Username,ChatInputWrapper} from './styled'
 import { CHATS_QUERY, CREATE_CHAT_MUTATION } from './graphql'
 
 const App = ({ chatsQuery, createChatMutation }) => {
@@ -50,29 +50,28 @@ const App = ({ chatsQuery, createChatMutation }) => {
 
   if (!from || from.length === 0) {
     return (
-      <div style={style.wrapper}>
-        <div style={style.signupWrapper}>
+      <Wrapper>
+        <SignUpWrapper>
           <Signup signin={from => setFrom(from)} />
-        </div>
-      </div>
+        </SignUpWrapper>
+      </Wrapper>
     )
   }
 
   return (
-    <div style={style.wrapper}>
-      <div style={style.chatWrapper}>
-        <div style={style.chatTitleWrapper}>
-          <h2 style={style.chatTitle}>
+    <Wrapper>
+      <ChatWrapper>
+        <ChatTitleContainer>
+          <ChatTitle>
             <span>Chat</span>
-            <span
-              style={style.username}
+            <Username
               onClick={() => setFrom('')}
               title="logout"
             >
               {from}
-            </span>
-          </h2>
-        </div>
+            </Username>
+          </ChatTitle>
+        </ChatTitleContainer>
         {chatsQuery.chats &&
           chatsQuery.chats.map(message => (
             <Chatbox
@@ -81,18 +80,17 @@ const App = ({ chatsQuery, createChatMutation }) => {
               currentUser={message.from === from}
             />
           ))}
-        <div style={style.chatInputWrapper}>
-          <input
-            style={style.chatInput}
+        <ChatInputWrapper>
+          <ChatInput
             type="text"
             placeholder="Start typing"
             value={content}
             onKeyPress={createChat}
             onChange={e => setContent(e.target.value)}
           />
-        </div>
-      </div>
-    </div>
+        </ChatInputWrapper>
+      </ChatWrapper>
+    </Wrapper>
   )
 }
 
