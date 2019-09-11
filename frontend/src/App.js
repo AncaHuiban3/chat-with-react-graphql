@@ -5,7 +5,14 @@ import gql from 'graphql-tag'
 import Signup from './screens/Auth/Signup'
 import Chatbox from './screens/ChatPage/Chatbox'
 
-import { ChatInput, Wrapper, SignUpWrapper, ChatWrapper , ChatTitleContainer, ChatTitle, Username,ChatInputWrapper} from './styled'
+import {
+  ChatInput,
+  Wrapper,
+  SignUpWrapper,
+  ChatTitle,
+  Username,
+  ChatInputWrapper,
+} from './styled'
 import { CHATS_QUERY, CREATE_CHAT_MUTATION } from './graphql'
 
 const App = ({ chatsQuery, createChatMutation }) => {
@@ -60,18 +67,12 @@ const App = ({ chatsQuery, createChatMutation }) => {
 
   return (
     <Wrapper>
-      <ChatWrapper>
-        <ChatTitleContainer>
-          <ChatTitle>
+        <ChatTitle>
             <span>Chat</span>
-            <Username
-              onClick={() => setFrom('')}
-              title="logout"
-            >
+            <Username onClick={() => setFrom('')} title="logout">
               {from}
             </Username>
-          </ChatTitle>
-        </ChatTitleContainer>
+        </ChatTitle>
         {chatsQuery.chats &&
           chatsQuery.chats.map(message => (
             <Chatbox
@@ -89,7 +90,6 @@ const App = ({ chatsQuery, createChatMutation }) => {
             onChange={e => setContent(e.target.value)}
           />
         </ChatInputWrapper>
-      </ChatWrapper>
     </Wrapper>
   )
 }

@@ -1,5 +1,5 @@
 import React, { memo, useState } from 'react'
-import { Wrapper, LabelWrapper, Input, Button } from './styled'
+import { Wrapper, LabelWrapper, Input, Button, ContentWrapper } from './styled'
 
 const Signup = ({ signin }) => {
   const [username, setUsername] = useState('')
@@ -15,7 +15,7 @@ const Signup = ({ signin }) => {
       <LabelWrapper>
         <label>Your username:</label>
       </LabelWrapper>
-      <div>
+      <ContentWrapper>
         <Input
           type="text"
           placeholder="your username"
@@ -26,7 +26,7 @@ const Signup = ({ signin }) => {
         <Button onClick={() => signin(username)}>
           enter
         </Button>
-      </div>
+      </ContentWrapper>
     </Wrapper>
   )
 }

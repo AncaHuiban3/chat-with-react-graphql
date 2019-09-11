@@ -5,4 +5,4 @@ import resolvers from './resolver';
 const pubsub = new PubSub();
 const server = new GraphQLServer({ typeDefs, resolvers, context: { pubsub } });
 
-server.start(() => console.log('Server is running on localhost:4000'));
+server.start(() => console.log('Server is running on port 4000'));
