@@ -4,7 +4,8 @@ export const theme = {
     primary: '#5887a7',
     secondary: '#333',
     white: '#fff',
-    lightBlue: '#6fb0dc'
+    lightBlue: '#6fb0dc',
+    grey: '#ddd'
   },
   spaces: {
     x0: '0',
@@ -21,4 +22,8 @@ export const theme = {
     x11: '88px',
     x12: '96px',
   },
+  fontSize: {
+    paragraph: '14px',
+    title: '16px'
+  }
 }

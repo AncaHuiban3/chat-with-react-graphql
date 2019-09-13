@@ -1,28 +1,55 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.div`
-    background-color: #f2f2f2;
-    padding: 5;
+  ${({
+    theme: {
+      colors: { background },
+      spaces: { x1 },
+    },
+  }) => css`
+    background-color: ${background};
+    padding: ${x1} / 2;
+    overflow: scroll;
+  `}
 `
 
 export const Author = styled.h5`
-    font-size: 16;
+  ${({
+    theme: {
+      spaces: { x1 },
+      fontSize: { title },
+    },
+  }) => css`
+    font-size: ${title};
     font-weight: bolder;
-    padding: 0;
-    margin: 5px 0 0 0;
+    margin-top: ${x1} / 2;
+  `}
 `
 export const AuthorColorized = styled(Author)`
-    color: #5887a7;
+  font-color: #5887a7;
 `
 
 export const Message = styled.div`
-    font-size: 14;
+  ${({
+    theme: {
+      spaces: { x2 },
+      fontSize: { paragraph },
+    },
+  }) => css`
+    font-size: ${paragraph};
     padding: 0;
-    margin: 0 0 0 5px;
- `
+    margin: 0 0 0 ${x2};
+  `}
+`
 
- export const Paragraph = styled.p`
-    font-size: 14;
-    padding: 0;
-    margin: 0 0 0 5px;
- `
+export const Paragraph = styled.p`
+  ${({
+    theme: {
+      spaces: { x1 },
+      fontSize: { paragraph },
+    },
+  }) => css`
+    font-size: ${paragraph};
+    // margin: 0 0 0 ${x1};
+  `}
+`

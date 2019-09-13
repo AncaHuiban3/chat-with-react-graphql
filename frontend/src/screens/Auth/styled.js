@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 export const Wrapper = styled.div`
   display: flex;
@@ -17,13 +17,27 @@ export const ContentWrapper = styled(Wrapper)`
 `
 
 export const Input = styled.input`
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  height: 40px;
+  ${({
+    theme: {
+      colors: { grey, white },
+      spaces: { x5 },
+    },
+  }) => css`
+    background-color: ${white};
+    border: 1px solid ${grey};
+    height: ${x5};
+  `}
 `
 
 export const Button = styled.button`
-  background-color: ${props => props.theme.colors.lightBlue};
-  color: white;
-  margin-left: 10px;
+  ${({
+    theme: {
+      colors: { lightBlue, white },
+      spaces: { x1 },
+    },
+  }) => css`
+    background-color: ${lightBlue};
+    color: ${white};
+    margin-left: ${x1};
+  `}
 `

@@ -12,6 +12,7 @@ import {
   ChatTitle,
   Username,
   ChatInputWrapper,
+  Button,
 } from './styled'
 import { CHATS_QUERY, CREATE_CHAT_MUTATION } from './graphql'
 
@@ -46,13 +47,11 @@ const App = ({ chatsQuery, createChatMutation }) => {
     subscribeToNewChats()
   }, [])
 
-  const createChat = async e => {
-    if (e.key === 'Enter') {
-      await createChatMutation({
-        variables: { content, from },
-      })
-      setContent('')
-    }
+  const createChat = async () => {
+    await createChatMutation({
+      variables: { content, from },
+    })
+    setContent('')
   }
 
   if (!from || from.length === 0) {
@@ -67,29 +66,30 @@ const App = ({ chatsQuery, createChatMutation }) => {
 
   return (
     <Wrapper>
-        <ChatTitle>
-            <span>Chat</span>
-            <Username onClick={() => setFrom('')} title="logout">
-              {from}
-            </Username>
-        </ChatTitle>
-        {chatsQuery.chats &&
-          chatsQuery.chats.map(message => (
-            <Chatbox
-              key={message.id}
-              message={message}
-              currentUser={message.from === from}
-            />
-          ))}
-        <ChatInputWrapper>
-          <ChatInput
-            type="text"
-            placeholder="Start typing"
-            value={content}
-            onKeyPress={createChat}
-            onChange={e => setContent(e.target.value)}
+      <ChatTitle>
+        <span>Chat</span>
+        <Username onClick={() => setFrom('')} title="logout">
+          {from}
+        </Username>
+      </ChatTitle>
+      {chatsQuery.chats &&
+        chatsQuery.chats.map(message => (
+          <Chatbox
+            key={message.id}
+            message={message}
+            currentUser={message.from === from}
           />
-        </ChatInputWrapper>
+        ))}
+      <ChatInputWrapper>
+        <ChatInput
+          type="text"
+          placeholder="Start typing"
+          value={content}
+          onKeyPress={e => e.key === 'Enter' && createChat()}
+          onChange={e => setContent(e.target.value)}
+        />
+        <Button onClick={createChat}> Send </Button>
+      </ChatInputWrapper>
     </Wrapper>
   )
 }
