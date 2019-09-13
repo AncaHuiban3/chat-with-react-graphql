@@ -30,7 +30,7 @@ export const ChatTitle = styled.div`
     },
   }) => css`
     background-color: #6fb0dc;
-    padding: ${x3} ${x2};
+    padding: ${x2} ${x2};
     justify-content: space-between;
     display: flex;
     align-items: center;

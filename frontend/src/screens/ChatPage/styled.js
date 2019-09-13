@@ -17,12 +17,9 @@ export const Author = styled.h5`
   ${({
     theme: {
       spaces: { x1 },
-      fontSize: { title },
     },
   }) => css`
-    font-size: ${title};
     font-weight: bolder;
-    margin-top: ${x1} / 2;
   `}
 `
 export const AuthorColorized = styled(Author)`
@@ -32,13 +29,13 @@ export const AuthorColorized = styled(Author)`
 export const Message = styled.div`
   ${({
     theme: {
-      spaces: { x2 },
+      spaces: { x1 },
       fontSize: { paragraph },
     },
   }) => css`
     font-size: ${paragraph};
     padding: 0;
-    margin: 0 0 0 ${x2};
+    margin: 0 0 0 ${x1};
   `}
 `
 
@@ -46,10 +43,8 @@ export const Paragraph = styled.p`
   ${({
     theme: {
       spaces: { x1 },
-      fontSize: { paragraph },
     },
   }) => css`
-    font-size: ${paragraph};
-    // margin: 0 0 0 ${x1};
+    margin: 0 0 0 ${x1};
   `}
 `
